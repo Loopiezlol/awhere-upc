@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/my_database');
+mongoose.connect('mongodb://localhost/awhere');
 app.use(cors());
 
 app.use(bodyParser.json({ limit: '50mb' }));
