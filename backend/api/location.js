@@ -9,10 +9,10 @@ function getAirQualityData(latitude, longitude) {
   request.get(`http://api.airvisual.com/v1/nearest?lat=${latitude.toPrecision(7)}&lon=${longitude.toPrecision(7)}&key=${keys.airQuality}`)
   .end((err, res) => {
     if (err) {
-      console.log(err);
-    } else {
-      console.log('got', res.body);
+      return err;
     }
+    console.log('got', res.body.data);
+    return res.body.data;
   });
 }
 
