@@ -5,16 +5,8 @@ const keys = require('../keys');
 
 function* getAirQualityData(latitude, longitude) {
   console.log('calling with',
-    `https://api.breezometer.com/baqi/?lat=${latitude.toPrecision(7)}&lon=${longitude.toPrecision(7)}&key=${keys.airQuality}`);
+    `https://api.breezometer.com/baqi/?lat=${latitude.toFixed(7)}&lon=${longitude.toFixed(7)}&key=${keys.airQuality}`);
   const response = yield request.get(`http://api.airvisual.com/v1/nearest?lat=${latitude.toPrecision(7)}&lon=${longitude.toPrecision(7)}&key=${keys.airQuality}`);
-  // .end((err, res) => {
-  //   if (err) {
-  //     return err;
-  //   }
-  //   console.log('got', res.body.data);
-  //   return res.body.data;
-  // });
-  console.log(response);
   if (response.body.data) {
     return response.body.data;
   }
@@ -30,7 +22,10 @@ function* handleLocation(req, res) {
   if (scenarios.indexOf('airQuality') !== -1) {
     toNotify.airQuality = yield getAirQualityData(location.latitude, location.longitude);
   }
+  console.log('toNotify', toNotify);
+  console.log('airQuality', toNotify.airQuality);
   res.json({
+    status: 200,
     ok: true,
   });
 }
