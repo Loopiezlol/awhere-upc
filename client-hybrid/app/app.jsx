@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 function startApp() {
   ReactDOM.render(
     <div className="view">
-      <p>Hello, helow</p>
+      <p>Hello, a</p>
     </div>, document.querySelector('.app'),
   );
 }
