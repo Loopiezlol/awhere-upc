@@ -16,10 +16,7 @@ function* getAirQualityData(latitude, longitude) {
 
 function* getUVData(latitude, longitude) {
   const response = yield request.get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=${keys.worldWeather}&q=${latitude.toFixed(7)},${longitude.toFixed(7)}&format=json`);
-  console.log('response', response);
-  console.log('called with' , `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=${keys.worldWeather}&q=${latitude.toFixed(7)},${longitude.toFixed(7)}&format=json`);
-  if (response.body.status === 'success') {
-    console.log(response.body.data);
+  if (response.body.status === 200) {
     return response.body.data;
   }
   return {
@@ -32,7 +29,6 @@ function* handleLocation(req, res) {
   const { location, scenarios } = req.body;
   if (scenarios.indexOf('airQuality') !== -1) {
     const airQualityData = yield getAirQualityData(location.latitude, location.longitude);
-    console.log('all data: ', airQualityData);
     if (!('err' in airQualityData)) {
       const parsedData = parseAirQualityData(airQualityData);
       if (parsedData) {
@@ -41,9 +37,8 @@ function* handleLocation(req, res) {
     }
   }
   if (scenarios.indexOf('uvRadiation') !== -1) {
-    console.log('hit');
     const weatherData = yield getUVData(location.latitude, location.longitude);
-    console.log(weatherData);
+    // console.log(weatherData);
     if (!('err' in weatherData)) {
       const parsedData = parseUVData(weatherData);
       if (parsedData) {
