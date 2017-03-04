@@ -15,7 +15,7 @@ function* getAirQualityData(latitude, longitude) {
 }
 
 function* getUVData(latitude, longitude) {
-  const response = yield request.get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=${keys.worldWeather}&q=${latitude.toFixed(7)},${longitude.toFixed(7)}&format=json`);
+  const response = yield request.get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=${keys.worldWeather}&q=${longitude.toFixed(7)},${latitude.toFixed(7)}&format=json`);
   if (response.body.status === 'success') {
     console.log(response.body.data);
     return response.body.data;
