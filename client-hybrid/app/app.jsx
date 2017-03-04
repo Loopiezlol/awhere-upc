@@ -27,7 +27,7 @@ function startApp() {
     .send({
       location,
       scenarios: [
-        'airQuality',
+        'uvRadiation',
       ],
     })
     .end((err, res) => {

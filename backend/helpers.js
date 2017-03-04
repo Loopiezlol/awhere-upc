@@ -40,6 +40,7 @@ module.exports = {
   },
 
   parseUVData(uvData) {
+    console.log(uvData);
     const uv = uvData.weather[0].uvIndex;
     console.log(uv);
     return {};
