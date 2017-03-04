@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
+import View from './view';
 
 function startApp() {
   ReactDOM.render(
     <div className="view">
-      <p>Hello, there</p>
+      <View />
     </div>, document.querySelector('.app'),
   );
 
