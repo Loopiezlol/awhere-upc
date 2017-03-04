@@ -3,6 +3,7 @@ import Reflux from 'reflux';
 import Belle from 'belle';
 import AirPolution from './toggleStore';
 import actions from './actions';
+import './styles/mainPage.scss';
 
 const Toggle = Belle.Toggle;
 const Choice = Belle.Choice;
@@ -10,7 +11,6 @@ const Choice = Belle.Choice;
 class View extends Reflux.Component {
   //eslint-disable-next-line
   handleAirQualityToggle(input) {
-    console.log(input.value);
     actions.toggleAirQuality(input.value);
   }
   //eslint-disable-next-line
@@ -37,7 +37,9 @@ class View extends Reflux.Component {
           Settings
         </div>
         <div className="air-polution">
+          <p className="air-description"> Turn on the air quality toggle</p>
           <Toggle
+            className="air-toggle"
             defaultValue={this.state.airQuality}
             onUpdate={value => this.handleAirQualityToggle(value)}
           >
@@ -46,7 +48,9 @@ class View extends Reflux.Component {
           </Toggle>
         </div>
         <div className="uv-radiations">
+          <p className="uv-description"> Turn on the UV rad. toggle</p>
           <Toggle
+            className="uv-toggle"
             defaultValue={this.state.airQuality}
             onUpdate={value => this.handleUvRadiationsToggle(value)}
           >
@@ -55,7 +59,9 @@ class View extends Reflux.Component {
           </Toggle>
         </div>
         <div className="weather">
+          <p className="weather-description"> Turn on the weather toggle</p>
           <Toggle
+            className="weather-toggle"
             defaultValue={this.state.airQuality}
             onUpdate={value => this.handleWeatherToggle(value)}
           >
@@ -63,8 +69,10 @@ class View extends Reflux.Component {
             <Choice value={false}>Off</Choice>
           </Toggle>
         </div>
-        <div className="trafic">
+        <div className="traffic">
+          <p className="traffic-description"> Turn on the traffic toggle</p>
           <Toggle
+            className="traffic-toggle"
             defaultValue={this.state.airQuality}
             onUpdate={value => this.handleTrafficToggle(value)}
           >
