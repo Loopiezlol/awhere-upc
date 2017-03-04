@@ -38,8 +38,10 @@ function* handleLocation(req, res) {
       }
     }
   }
-  if (scenarios.indexOf('uvRadation') !== -1) {
+  if (scenarios.indexOf('uvRadiation') !== -1) {
+    console.log('hit');
     const weatherData = yield getUVData(location.latitude, location.longitude);
+    console.log(weatherData);
     if (!('err' in weatherData)) {
       const parsedData = parseUVData(weatherData);
       if (parsedData) {
