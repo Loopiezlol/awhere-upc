@@ -1,0 +1,16 @@
+{
+  "ios": {
+    "debug": {
+      "release": {
+        "developmentTeam": "loopiezlol@gmail.com",
+        "packageType": "app-store",
+        "provisioningProfile": "7GADW9J565"
+      }
+    },
+    "release": {
+      "developmentTeam": "loopiezlol@gmail.com",
+      "packageType": "app-store",
+      "provisioningProfile": "7GADW9J565"
+    }
+  }
+}

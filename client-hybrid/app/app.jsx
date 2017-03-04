@@ -62,11 +62,11 @@ function startApp() {
 
   bgLocation.configure(locationCallback, failureCallback, {
     desiredAccuracy: 10,
-    // stationaryRadius: 5,
+    stationaryRadius: 1,
     // distanceFilter: 30,
     stopOnTerminate: false,
     startOnBoot: true,
-    // interval: 100,
+    interval: 1000,
     // locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
   });
 
