@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
 import notificationsIds from '../../common/notificationsIds';
+import View from './view';
+
+import './styles/mainPage.scss';
 
 function startApp() {
   const notif = cordova.plugins.notification.local;
@@ -9,7 +12,7 @@ function startApp() {
 
   ReactDOM.render(
     <div className="view">
-      <p>Hello, there</p>
+      <View />
     </div>, document.querySelector('.app'),
   );
 

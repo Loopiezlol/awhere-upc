@@ -66,6 +66,7 @@
   "dependencies": {
     "babel-polyfill": "^6.22.0",
     "babel-preset-react": "^6.22.0",
+    "belle": "^3.0.1",
     "body-parser": "^1.16.0",
     "co-express": "^1.2.2",
     "cors": "^2.8.1",
