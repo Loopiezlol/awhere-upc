@@ -32,11 +32,12 @@ function* handleLocation(req, res) {
       status: 200,
       toNotify,
     });
+  } else {
+    res.json({
+      status: 200,
+      message: 'Nothing to return',
+    });
   }
-  res.json({
-    status: 200,
-    message: 'Nothing to return',
-  });
 }
 
 router.put('/', wrap(handleLocation));
