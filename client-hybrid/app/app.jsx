@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <div className="view">
-    <p>Hello, bawssszw</p>
-  </div>, document.querySelector('.app'),
-);
+function startApp() {
+  ReactDOM.render(
+    <div className="view">
+      <p>Hello, helow</p>
+    </div>, document.querySelector('.app'),
+  );
+}
+
+if (window.cordova) {
+  document.addEventListener('deviceready', startApp, false);
+} else {
+  startApp();
+}
