@@ -2,11 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const app = express();
 
 mongoose.connect('mongodb://localhost/awhere');
 app.use(cors());
+app.use(morgan('dev'));
 
 app.use(bodyParser.json({ limit: '50mb' }));
 
