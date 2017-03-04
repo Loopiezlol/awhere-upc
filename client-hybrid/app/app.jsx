@@ -14,7 +14,8 @@ function startApp() {
   const locationCallback = function (location) {
     console.log('[js] BackgroundGeolocation callback:  ', location.latitude, ',', location.longitude);
 
-    request.get('https://awhere.scalingo.io/')
+    request.put('https://awhere.scalingo.io/location')
+    .send(location)
     .end((err, res) => {
       if (err) {
         console.log(err);
