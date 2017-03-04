@@ -2,11 +2,11 @@
   "name": "awhere",
   "version": "0.1.0",
   "description": "Hack UPC winning project",
-  "main": "index.js",
   "repository": {},
   "author": "loopiezlol",
   "license": "MIT",
   "scripts": {
+    "start": "node ./backend/app.js",
     "backend": "cd backend && nodemon app.js",
     "hybrid:dev": "cd client-hybrid && ../node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base .dist/ --hot --progress --colors",
     "hybrid:build": "cd client-hybrid && ../node_modules/webpack/bin/webpack.js --config ./webpack.config.production.babel.js --progress --colors -p",
@@ -70,6 +70,6 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "reflux": "^6.0.0",
-    "superagent": "^3.4.1"
+    "superagent": "^3.5.0"
   }
 }

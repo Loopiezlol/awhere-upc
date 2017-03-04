@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import request from 'superagent';
 
 function startApp() {
   ReactDOM.render(
@@ -7,22 +8,44 @@ function startApp() {
       <p>Hello, there</p>
     </div>, document.querySelector('.app'),
   );
-  const bgLocation = window.backgroundGeolocation;
 
-  const callbackFn = function (location) {
+  const bgLocation = window.backgroundGeolocation;
+  // const request = window.cordovaHTTP;
+
+  const locationCallback = function (location) {
     console.log('[js] BackgroundGeolocation callback:  ', location.latitude, ',', location.longitude);
-    bgLocation.finish();
+    // request.get('http://0.0.0.0:3000/', {}, {}, (response) => {
+    //   console.log(response);
+    // }, (err) => {
+    //   console.log(err);
+    // });
+    request.get('http://localhost:3000/')
+    .withCredentials()
+    .end((err, res) => {
+      if (err) {
+        console.log(err);
+        bgLocation.finish();
+      } else {
+        console.log(res);
+        bgLocation.finish();
+      }
+    });
   };
 
-  const failureFn = function (error) {
+  const failureCallback = function (error) {
     console.log('BackgroundGeolocation error', error);
   };
 
-  bgLocation.configure(callbackFn, failureFn, {
+  bgLocation.configure(locationCallback, failureCallback, {
     desiredAccuracy: 10,
     stationaryRadius: 20,
     distanceFilter: 30,
-    interval: 60000,
+    locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
+    notificationTitle: 'Background tracking',
+    notificationText: 'swag',
+    notificationIconColor: '#FEDD1E',
+    notificationIconLarge: 'mappointer_large',
+    notificationIconSmall: 'mappointer_small',
   });
 
   bgLocation.start();
