@@ -19,6 +19,7 @@ function* handleLocation(req, res) {
   const { location, scenarios } = req.body;
   if (scenarios.indexOf('airQuality') !== -1) {
     const airQualityData = yield getAirQualityData(location.latitude, location.longitude);
+    console.log('all data: ', airQualityData);
     if (!('err' in airQualityData)) {
       const aqius = airQualityData.current.pollution.aqius;
       switch (true) {
@@ -39,6 +40,7 @@ function* handleLocation(req, res) {
           console.log('dude...');
           break;
         default:
+          console.log('safe bro');
           break;
       }
     }
