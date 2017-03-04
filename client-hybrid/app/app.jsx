@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
+import notificationsIds from '../../common/notificationsIds';
 
-
-function sendNotif(notif) {
-  notif.schedule({
-    id: 4,
-    title: 'heyo there',
-    text: 'ala bala',
-  });
+function sendNotif(notif, data) {
+  console.log(data);
+  notif.schedule(data);
   console.log('called');
 }
 
@@ -19,7 +16,6 @@ function startApp() {
   ReactDOM.render(
     <div className="view">
       <p>Hello, there</p>
-      <button onClick={() => sendNotif(notif)}>Click</button>
     </div>, document.querySelector('.app'),
   );
 
@@ -43,10 +39,22 @@ function startApp() {
     .end((err, res) => {
       if (err) {
         console.log(err);
+        // TODO: show error
         bgLocation.finish();
       } else {
         console.log(res);
-        sendNotif(notif);
+        const { toNotify } = res.body;
+        sendNotif(notif,
+          Object.keys(toNotify).map(scenario => ({
+            id: notificationsIds[scenario],
+            title: toNotify[scenario].title,
+            message: toNotify[scenario].message,
+          }),
+          ),
+        );
+        // Object.keys(toNotify).forEach((scenario) => {
+        //   sendNotif(notif, toNotify[scenario], scenario);
+        // });
         bgLocation.finish();
       }
     });
