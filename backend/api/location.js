@@ -5,8 +5,8 @@ const keys = require('../keys');
 
 function getAirQualityData(latitude, longitude) {
   console.log('calling with',
-    `https://api.breezometer.com/baqi/?lat=${latitude}&lon=${longitude}&key=${keys.airQuality}`);
-  request.get(`https://api.breezometer.com/baqi/?lat=${latitude}&lon=${longitude}&key=${keys.airQuality}`)
+    `https://api.breezometer.com/baqi/?lat=${latitude.toPrecision(7)}&lon=${longitude.toPrecision(7)}&key=${keys.airQuality}`);
+  request.get(`https://api.breezometer.com/baqi/?lat=${latitude.toPrecision(7)}&lon=${longitude.toPrecision(7)}&key=${keys.airQuality}`)
   .end((err, res) => {
     if (err) {
       console.log(err);
