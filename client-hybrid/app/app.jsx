@@ -3,12 +3,6 @@ import ReactDOM from 'react-dom';
 import request from 'superagent';
 import notificationsIds from '../../common/notificationsIds';
 
-function sendNotif(notif, data) {
-  console.log(data);
-  notif.schedule(data);
-  console.log('called');
-}
-
 function startApp() {
   const notif = cordova.plugins.notification.local;
   const bgLocation = window.backgroundGeolocation;
@@ -44,17 +38,17 @@ function startApp() {
       } else {
         console.log(res);
         const { toNotify } = res.body;
-        sendNotif(notif,
+        notif.schedule(
           Object.keys(toNotify).map(scenario => ({
             id: notificationsIds[scenario],
             title: toNotify[scenario].title,
-            message: toNotify[scenario].message,
+            style: 'bigtextview',
+            text: toNotify[scenario].message,
+            vibration: true,
+            headsup: true,
           }),
           ),
         );
-        // Object.keys(toNotify).forEach((scenario) => {
-        //   sendNotif(notif, toNotify[scenario], scenario);
-        // });
         bgLocation.finish();
       }
     });
@@ -70,8 +64,8 @@ function startApp() {
     distanceFilter: 30,
     stopOnTerminate: false,
     startOnBoot: true,
-    interval: 60000,
-    locationProvider: bgLocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
+    interval: 6000,
+    locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
   });
 
   bgLocation.start();
