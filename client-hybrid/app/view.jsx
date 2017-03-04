@@ -33,11 +33,8 @@ class View extends Reflux.Component {
   render() {
     return (
       <div className="main-page">
-        <div className="settings-bar">
-          Settings
-        </div>
         <div className="air-polution">
-          <p className="air-description"> Turn on the air quality toggle</p>
+            <p className="air-description"> Turn on the air quality toggle</p>
           <Toggle
             className="air-toggle"
             defaultValue={this.state.airQuality}

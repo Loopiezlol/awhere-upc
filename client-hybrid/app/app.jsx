@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
 import View from './view';
+import './styles/mainPage.scss';
 
 function startApp() {
   ReactDOM.render(
