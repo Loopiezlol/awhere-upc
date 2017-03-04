@@ -34,13 +34,19 @@ function startApp() {
     console.log('[js] BackgroundGeolocation callback:  ', location.latitude, ',', location.longitude);
 
     request.put('https://awhere.scalingo.io/location')
-    .send(location)
+    .send({
+      location,
+      scenarios: [
+        'airQuality',
+      ],
+    })
     .end((err, res) => {
       if (err) {
         console.log(err);
         bgLocation.finish();
       } else {
         console.log(res);
+        sendNotif(notif);
         bgLocation.finish();
       }
     });
@@ -52,14 +58,12 @@ function startApp() {
 
   bgLocation.configure(locationCallback, failureCallback, {
     desiredAccuracy: 10,
-    stationaryRadius: 20,
+    stationaryRadius: 5,
     distanceFilter: 30,
-    locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
-    notificationTitle: 'Background tracking',
-    notificationText: 'swag',
-    notificationIconColor: '#FEDD1E',
-    notificationIconLarge: 'mappointer_large',
-    notificationIconSmall: 'mappointer_small',
+    stopOnTerminate: false,
+    startOnBoot: true,
+    interval: 60000,
+    locationProvider: bgLocation.provider.ANDROID_DISTANCE_FILTER_PROVIDER,
   });
 
   bgLocation.start();

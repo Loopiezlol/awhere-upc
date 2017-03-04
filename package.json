@@ -13,7 +13,9 @@
     "hybrid:watch": "cd client-hybrid && ../node_modules/webpack/bin/webpack.js --config ./webpack.config.production.babel.js --progress --colors --watch",
     "hybrid:ios": "yarn hybrid:build && cd client-hybrid && cordova run ios",
     "hybrid:android": "yarn hybrid:build && cd client-hybrid && cordova run android",
-    "hybrid:android:reload": "cd client-hybrid && cordova run android -- --live-reload"
+    "hybrid:android:reload": "cd client-hybrid && cordova run android -- --live-reload",
+    "hybrid:ios:reload": "cd client-hybrid && cordova run ios -- --live-reload"
+
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
