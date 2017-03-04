@@ -1,3 +1,3 @@
 module.exports = {
-  airQuality: '9219847b1aaa4055b4d0023abf98ae17',
+  airQuality: '7y5j8BepNyoddT2xJ',
 };
