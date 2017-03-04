@@ -38,17 +38,19 @@ function startApp() {
       } else {
         console.log(res);
         const { toNotify } = res.body;
-        notif.schedule(
-          Object.keys(toNotify).map(scenario => ({
-            id: notificationsIds[scenario],
-            title: toNotify[scenario].title,
-            style: 'bigtextview',
-            text: toNotify[scenario].message,
-            vibration: true,
-            headsup: true,
-          }),
-          ),
-        );
+        if (toNotify) {
+          notif.schedule(
+            Object.keys(toNotify).map(scenario => ({
+              id: notificationsIds[scenario],
+              title: toNotify[scenario].title,
+              style: 'bigtextview',
+              text: toNotify[scenario].message,
+              vibration: true,
+              headsup: true,
+            }),
+            ),
+          );
+        }
         bgLocation.finish();
       }
     });
@@ -60,12 +62,12 @@ function startApp() {
 
   bgLocation.configure(locationCallback, failureCallback, {
     desiredAccuracy: 10,
-    stationaryRadius: 5,
-    distanceFilter: 30,
+    // stationaryRadius: 5,
+    // distanceFilter: 30,
     stopOnTerminate: false,
     startOnBoot: true,
-    interval: 6000,
-    locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
+    // interval: 100,
+    // locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
   });
 
   bgLocation.start();
