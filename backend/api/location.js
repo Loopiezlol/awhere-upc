@@ -38,7 +38,6 @@ function* handleLocation(req, res) {
   }
   if (scenarios.indexOf('uvRadiation') !== -1) {
     const weatherData = yield getUVData(location.latitude, location.longitude);
-    // console.log(weatherData);
     if (!('err' in weatherData)) {
       const parsedData = parseUVData(weatherData);
       if (parsedData) {

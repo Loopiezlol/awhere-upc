@@ -39,10 +39,33 @@ module.exports = {
     }
   },
 
+  //eslint-disable-next-line
   parseUVData(uvData) {
-    console.log(uvData);
     const uv = uvData.weather[0].uvIndex;
-    console.log(uv);
-    return {};
+    switch (true) {
+      case (uv >= 3 && uv <= 5):
+        return {
+          title: `Moderate UV index - ${uv}`,
+          message: 'Stay indor during midday',
+        };
+      case (uv >= 6 && uv <= 7):
+        return {
+          title: `High UV index - ${uv}`,
+          message: 'High risk of harm from unprotected sun exposure',
+        };
+      case (uv >= 8 && uv <= 10):
+        return {
+          title: `Very High UV index - ${uv}`,
+          message: 'Very high risk of harm from unprotected sun exposure',
+        };
+      case (uv === 11):
+        return {
+          title: `EXTREME UV index - ${uv}`,
+          message: 'Not cool',
+        };
+      default:
+        console.log('safe bro');
+        break;
+    }
   },
 };
