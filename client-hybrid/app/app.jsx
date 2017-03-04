@@ -2,14 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
 
+
+function sendNotif(notif) {
+  notif.schedule({
+    id: 4,
+    title: 'heyo there',
+    text: 'ala bala',
+  });
+  console.log('called');
+}
+
 function startApp() {
+  const notif = cordova.plugins.notification.local;
+  const bgLocation = window.backgroundGeolocation;
+
   ReactDOM.render(
     <div className="view">
       <p>Hello, there</p>
+      <button onClick={() => sendNotif(notif)}>Click</button>
     </div>, document.querySelector('.app'),
   );
 
-  const bgLocation = window.backgroundGeolocation;
+  notif.on('click', () => {
+    console.log('meeeeen');
+    notif.cancel(4, () => {
+      console.log('canceled');
+    });
+  });
 
   const locationCallback = function (location) {
     console.log('[js] BackgroundGeolocation callback:  ', location.latitude, ',', location.longitude);

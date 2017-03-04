@@ -50,7 +50,10 @@
       "es6": true,
       "commonjs": true
     },
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "globals": {
+      "cordova": true
+    }
   },
   "babel": {
     "presets": [
