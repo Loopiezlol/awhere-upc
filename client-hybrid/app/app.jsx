@@ -10,17 +10,11 @@ function startApp() {
   );
 
   const bgLocation = window.backgroundGeolocation;
-  // const request = window.cordovaHTTP;
 
   const locationCallback = function (location) {
     console.log('[js] BackgroundGeolocation callback:  ', location.latitude, ',', location.longitude);
-    // request.get('http://0.0.0.0:3000/', {}, {}, (response) => {
-    //   console.log(response);
-    // }, (err) => {
-    //   console.log(err);
-    // });
-    request.get('http://localhost:3000/')
-    .withCredentials()
+
+    request.get('https://awhere.scalingo.io/')
     .end((err, res) => {
       if (err) {
         console.log(err);
