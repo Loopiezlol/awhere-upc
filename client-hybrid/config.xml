@@ -26,4 +26,9 @@
     <engine name="android" spec="~6.1.2" />
     <engine name="ios" spec="~4.3.1" />
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
+    <plugin name="cordova-plugin-mauron85-background-geolocation" spec="~2.2.5">
+        <variable name="ACCOUNT_TYPE" value="$PACKAGE_NAME.account" />
+        <variable name="CONTENT_AUTHORITY" value="$PACKAGE_NAME" />
+        <variable name="ALWAYS_USAGE_DESCRIPTION" value="This app requires background location tracking" />
+    </plugin>
 </widget>
