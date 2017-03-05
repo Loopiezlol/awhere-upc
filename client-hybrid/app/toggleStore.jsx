@@ -12,7 +12,7 @@ function updateLocalStorage(toAdd) {
 
 function getFromLocalStorage() {
   return Object.keys(notifs).reduce((acc, cur) => {
-    acc[cur] = !(store.has(cur) || store(cur) === false);
+    acc[cur] = !(!store.has(cur) || store(cur) === false);
     return acc;
   }, {});
 }

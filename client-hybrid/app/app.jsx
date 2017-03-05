@@ -46,9 +46,6 @@ function startApp() {
         console.log(res);
         const { toNotify } = res.body;
         if (toNotify && notif) {
-          console.log(notif.getTriggered((notifications) => {
-            console.log(notifications);
-          }));
           notif.schedule(
             Object.keys(toNotify).map(scenario => ({
               id: notificationsIds[scenario],
