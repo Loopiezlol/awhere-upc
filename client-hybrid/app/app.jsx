@@ -15,9 +15,8 @@ function startApp() {
   let notif = {};
   if (window.cordova) {
     notif = cordova.plugins.notification.local;
-    notif.on('click', () => {
-      console.log('meeeeen');
-      notif.cancel(4, () => {
+    notif.on('click', (notification) => {
+      notif.cancel(notification.id, () => {
         console.log('canceled');
       });
     });
