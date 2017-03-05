@@ -1,6 +1,6 @@
 module.exports = {
   //eslint-disable-next-line
-  parseLocationData(airQualityData) {
+  parseAirQualityData(airQualityData) {
     const aqius = airQualityData.current.pollution.aqius;
     switch (true) {
       case (aqius >= 51 && aqius <= 100):
