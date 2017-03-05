@@ -10,6 +10,7 @@ body,
 .view > div {
   flex: 1;
 }
+
 .view {
    margin: 0px;
    min-height: 100%;
@@ -18,8 +19,8 @@ body,
    .main-page > div {
      flex: 1;
      display: flex;
-  justify-content: center;
-  flex-direction: column;
+     justify-content: center;
+     flex-direction: column;
    }
 
    .main-page {
@@ -29,54 +30,49 @@ body,
      height: 100%;
      display: flex;
      flex-direction: column;
-     .air-polution {
-       width: 100%;
-       margin: 0px;
-       position: relative;
-       border: 1px solid black;
-       .air-description {
-         width: 60%;;
+     font: 'Roboto';
+
+
+     .item {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       border-bottom: 3px #342D46 solid;
+       padding: 15px;
+       background-color: #DCDBE4;
+
+       p {
+         margin: 0 !important;
+         color: #342D46;
        }
-       .air-toggle {
-         left: 90%;
-         transform: translateX(-50%);
+
+       .on {
+         background-color: #754FDE;
+       }
+
+       .top-wrapper {
+         width: 100%;
+         display: inline-flex;
+         align-items: center;
+         height: 50%;
+
+         .title {
+           font-size: 20px;
+           font-weight: 500;
+         }
+
+         .toggle {
+           position: absolute !important;
+           right: 15px;
+
+         }
+       }
+
+       .explanation {
+         padding-top: 10px;
+         font-size: 13px;
+         width: 100%;
        }
      }
-     .uv-radiations{
-        height: 25%;
-        width: 100%;
-        margin: 0px;
-        position: relative;
-       .uv-description{
-
-       }
-       .uv-toggle {
-
-       }
-     }
-     .weather {
-        height: 25%;
-        width: 100%;
-        margin: 0px;
-        position: relative;
-        .weather-description {
-
-        }
-        .weather-toggle {
-
-        }
-     }
-     .traffic {
-        height: 25%;
-        width: 100%;
-        margin: 0px;
-        position: relative;
-      .traffic-description {
-
-      }
-      .traffic-toggle{
-
-      }
-     }
-   }
+  }
 }

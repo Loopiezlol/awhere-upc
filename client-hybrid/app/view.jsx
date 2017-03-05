@@ -33,49 +33,71 @@ class View extends Reflux.Component {
   render() {
     return (
       <div className="main-page">
-        <div className="air-polution">
-          <p className="air-description"> Turn on the air quality toggle</p>
-          <Toggle
-            className="air-toggle"
-            defaultValue={this.state.airQuality}
-            onUpdate={value => this.handleAirQualityToggle(value)}
-          >
-            <Choice value>On</Choice>
-            <Choice value={false}>Off</Choice>
-          </Toggle>
+        <div className="item air-polution">
+          <div className="top-wrapper">
+            <p className="title air-description">Air quality</p>
+            <Toggle
+              className="toggle air-toggle"
+              defaultValue={this.state.airQuality}
+              onUpdate={value => this.handleAirQualityToggle(value)}
+            >
+              <Choice value>On</Choice>
+              <Choice value={false}>Off</Choice>
+            </Toggle>
+          </div>
+          <p className="explanation">
+            Get notified about pollution levels and air quality around you.
+            Recommended for people suffering from lung diseases, elders and children.
+          </p>
         </div>
-        <div className="uv-radiations">
-          <p className="uv-description"> Turn on the UV rad. toggle</p>
-          <Toggle
-            className="uv-toggle"
-            defaultValue={this.state.uvRadiations}
-            onUpdate={value => this.handleUvRadiationsToggle(value)}
-          >
-            <Choice value>On</Choice>
-            <Choice value={false}>Off</Choice>
-          </Toggle>
+        <div className="item uv-radiations">
+          <div className="top-wrapper">
+            <p className="title uv-description">Ultra Violet Radiation</p>
+            <Toggle
+              className="toggle uv-toggle"
+              defaultValue={this.state.uvRadiations}
+              onUpdate={value => this.handleUvRadiationsToggle(value)}
+            >
+              <Choice value>On</Choice>
+              <Choice value={false}>Off</Choice>
+            </Toggle>
+          </div>
+          <p className="explanation">
+            Got sensitive skin? This might help you not get red as any rose in July.
+          </p>
         </div>
-        <div className="weather">
-          <p className="weather-description"> Turn on the weather toggle</p>
-          <Toggle
-            className="weather-toggle"
-            defaultValue={this.state.weather}
-            onUpdate={value => this.handleWeatherToggle(value)}
-          >
-            <Choice value>On</Choice>
-            <Choice value={false}>Off</Choice>
-          </Toggle>
+        <div className="item weather">
+          <div className="top-wrapper">
+            <p className="title weather-description">Unpleasent forecast</p>
+            <Toggle
+              className="toggle weather-toggle"
+              defaultValue={this.state.weather}
+              onUpdate={value => this.handleWeatherToggle(value)}
+            >
+              <Choice value>On</Choice>
+              <Choice value={false}>Off</Choice>
+            </Toggle>
+          </div>
+          <p className="explanation">
+            Especially useful for Londoners.
+            Coming soon - promise!
+          </p>
         </div>
-        <div className="traffic">
-          <p className="traffic-description"> Turn on the traffic toggle</p>
-          <Toggle
-            className="traffic-toggle"
-            defaultValue={this.state.traffic}
-            onUpdate={value => this.handleTrafficToggle(value)}
-          >
-            <Choice value>On</Choice>
-            <Choice value={false}>Off</Choice>
-          </Toggle>
+        <div className="item traffic">
+          <div className="top-wrapper">
+            <p className="title traffic-description">Avoid traffic jams</p>
+            <Toggle
+              className="toggle traffic-toggle"
+              defaultValue={this.state.traffic}
+              onUpdate={value => this.handleTrafficToggle(value)}
+            >
+              <Choice value>On</Choice>
+              <Choice value={false}>Off</Choice>
+            </Toggle>
+          </div>
+          <p className="explanation">
+            # TODO: deprecate when Elon Musk solves this one
+          </p>
         </div>
       </div>
     );
