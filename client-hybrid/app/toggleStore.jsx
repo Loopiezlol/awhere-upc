@@ -12,7 +12,7 @@ function updateLocalStorage(toAdd) {
 
 function getFromLocalStorage() {
   return Object.keys(notifs).reduce((acc, cur) => {
-    acc[cur] = !(typeof store(cur) === 'undefined' || store(cur) === false);
+    acc[cur] = !(store.has(cur) || store(cur) === false);
     return acc;
   }, {});
 }
@@ -20,7 +20,6 @@ function getFromLocalStorage() {
 class ToggleStore extends Reflux.Store {
   constructor(props) {
     super(props);
-    getFromLocalStorage();
     this.state = getFromLocalStorage();
     this.listenables = actions;
   }

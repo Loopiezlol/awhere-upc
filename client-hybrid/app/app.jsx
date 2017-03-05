@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
+import store from 'store2';
 import notificationsIds from '../../common/notificationsIds';
 import View from './view';
-import actions from './actions';
 
 import './styles/mainPage.scss';
+
+function getCachedScenarios() {
+  return Object.keys(notificationsIds).filter(n => store(n));
+}
 
 function startApp() {
   let notif = {};
@@ -32,9 +36,7 @@ function startApp() {
     request.put('https://awhere.scalingo.io/location')
     .send({
       location,
-      scenarios: [
-        'uvRadiation',
-      ],
+      scenarios: getCachedScenarios(),
     })
     .end((err, res) => {
       if (err) {
