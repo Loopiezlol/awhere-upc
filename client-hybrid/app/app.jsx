@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import request from 'superagent';
 import notificationsIds from '../../common/notificationsIds';
 import View from './view';
+import actions from './actions';
 
 import './styles/mainPage.scss';
 
 function startApp() {
-  const notif = cordova.plugins.notification.local;
+  let notif = {};
+  if (window.cordova) {
+    notif = cordova.plugins.notification.local;
+    notif.on('click', () => {
+      console.log('meeeeen');
+      notif.cancel(4, () => {
+        console.log('canceled');
+      });
+    });
+  }
   const bgLocation = window.backgroundGeolocation;
 
   ReactDOM.render(
@@ -15,13 +25,6 @@ function startApp() {
       <View />
     </div>, document.querySelector('.app'),
   );
-
-  notif.on('click', () => {
-    console.log('meeeeen');
-    notif.cancel(4, () => {
-      console.log('canceled');
-    });
-  });
 
   const locationCallback = function (location) {
     console.log('[js] BackgroundGeolocation callback:  ', location.latitude, ',', location.longitude);
@@ -41,7 +44,7 @@ function startApp() {
       } else {
         console.log(res);
         const { toNotify } = res.body;
-        if (toNotify) {
+        if (toNotify && notif) {
           notif.schedule(
             Object.keys(toNotify).map(scenario => ({
               id: notificationsIds[scenario],
@@ -63,17 +66,19 @@ function startApp() {
     console.log('BackgroundGeolocation error', error);
   };
 
-  bgLocation.configure(locationCallback, failureCallback, {
-    desiredAccuracy: 10,
-    stationaryRadius: 1,
-    // distanceFilter: 30,
-    stopOnTerminate: false,
-    startOnBoot: true,
-    interval: 1000,
-    // locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
-  });
+  if (bgLocation) {
+    bgLocation.configure(locationCallback, failureCallback, {
+      desiredAccuracy: 10,
+      stationaryRadius: 1,
+      // distanceFilter: 30,
+      stopOnTerminate: false,
+      startOnBoot: true,
+      interval: 1000,
+      locationProvider: bgLocation.provider.ANDROID_ACTIVITY_PROVIDER,
+    });
 
-  bgLocation.start();
+    bgLocation.start();
+  }
 }
 
 if (window.cordova) {

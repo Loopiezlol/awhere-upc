@@ -15,7 +15,6 @@
     "hybrid:android": "yarn hybrid:build && cd client-hybrid && cordova run android",
     "hybrid:android:reload": "cd client-hybrid && cordova run android -- --live-reload",
     "hybrid:ios:reload": "cd client-hybrid && cordova run ios -- --live-reload"
-
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -76,6 +75,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "reflux": "^6.0.0",
+    "store2": "^2.5.0",
     "superagent": "^3.5.0"
   }
 }

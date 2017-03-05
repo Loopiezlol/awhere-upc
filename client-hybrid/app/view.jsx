@@ -1,7 +1,7 @@
 import React from 'react';
 import Reflux from 'reflux';
 import Belle from 'belle';
-import AirPolution from './toggleStore';
+import toggleStore from './toggleStore';
 import actions from './actions';
 import './styles/mainPage.scss';
 
@@ -28,13 +28,13 @@ class View extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.store = AirPolution;
+    this.store = toggleStore;
   }
   render() {
     return (
       <div className="main-page">
         <div className="air-polution">
-            <p className="air-description"> Turn on the air quality toggle</p>
+          <p className="air-description"> Turn on the air quality toggle</p>
           <Toggle
             className="air-toggle"
             defaultValue={this.state.airQuality}
@@ -48,7 +48,7 @@ class View extends Reflux.Component {
           <p className="uv-description"> Turn on the UV rad. toggle</p>
           <Toggle
             className="uv-toggle"
-            defaultValue={this.state.airQuality}
+            defaultValue={this.state.uvRadiations}
             onUpdate={value => this.handleUvRadiationsToggle(value)}
           >
             <Choice value>On</Choice>
@@ -59,7 +59,7 @@ class View extends Reflux.Component {
           <p className="weather-description"> Turn on the weather toggle</p>
           <Toggle
             className="weather-toggle"
-            defaultValue={this.state.airQuality}
+            defaultValue={this.state.weather}
             onUpdate={value => this.handleWeatherToggle(value)}
           >
             <Choice value>On</Choice>
@@ -70,7 +70,7 @@ class View extends Reflux.Component {
           <p className="traffic-description"> Turn on the traffic toggle</p>
           <Toggle
             className="traffic-toggle"
-            defaultValue={this.state.airQuality}
+            defaultValue={this.state.traffic}
             onUpdate={value => this.handleTrafficToggle(value)}
           >
             <Choice value>On</Choice>
