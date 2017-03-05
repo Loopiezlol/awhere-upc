@@ -29,7 +29,7 @@ function* handleLocation(req, res) {
   const { location, scenarios } = req.body;
   if (scenarios.indexOf('airQuality') !== -1) {
     const airQualityData = yield getAirQualityData(location.latitude, location.longitude);
-    if (!('err' in (airQualityData || {}))) {
+    if (!('err' in airQualityData)) {
       const parsedData = parseAirQualityData(airQualityData);
       if (parsedData) {
         toNotify.airQuality = parsedData;
@@ -38,7 +38,7 @@ function* handleLocation(req, res) {
   }
   if (scenarios.indexOf('uvRadiation') !== -1) {
     const weatherData = yield getUVData(location.latitude, location.longitude);
-    if (!('err' in (weatherData || {}))) {
+    if (!('err' in weatherData)) {
       const parsedData = parseUVData(weatherData);
       if (parsedData) {
         toNotify.airQuality = parsedData;
