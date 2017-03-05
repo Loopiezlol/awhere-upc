@@ -29,8 +29,10 @@ function* handleLocation(req, res) {
   const { location, scenarios } = req.body;
   if (scenarios.indexOf('airQuality') !== -1) {
     const airQualityData = yield getAirQualityData(location.latitude, location.longitude);
+    console.log(airQualityData);
     if (!('err' in airQualityData)) {
       const parsedData = parseAirQualityData(airQualityData);
+      console.log('parsed data', parsedData);
       if (parsedData) {
         toNotify.airQuality = parsedData;
       }
