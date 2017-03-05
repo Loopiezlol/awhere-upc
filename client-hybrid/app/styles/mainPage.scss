@@ -18,8 +18,8 @@ body,
    .main-page > div {
      flex: 1;
      display: flex;
-  justify-content: center;
-  flex-direction: column;
+     justify-content: center;
+     flex-direction: column;
    }
 
    .main-page {
@@ -34,49 +34,86 @@ body,
        margin: 0px;
        position: relative;
        border: 1px solid black;
+
        .air-description {
-         width: 60%;;
+         text-align: center;
+         text-shadow: 3px 2px red;
+         font-family: "Roboto", serif;
+         font-size: 50px;
+         width: 600px;
        }
+
        .air-toggle {
-         left: 90%;
+         left: 85%;
+         top: -20%;
+         transform: translateY(-50%);
          transform: translateX(-50%);
        }
      }
+
      .uv-radiations{
         height: 25%;
         width: 100%;
         margin: 0px;
         position: relative;
-       .uv-description{
+        border: 1px solid black;
 
+       .uv-description{
+         text-align: center;
+         text-shadow: 3px 2px red;
+         font-family: "Roboto", serif;
+         font-size: 50px;
+         width: 600px;
        }
        .uv-toggle {
-
+         left: 85%;
+         top: -5%;
+         transform: translateY(-50%);
+         transform: translateX(-50%);
        }
      }
+
      .weather {
         height: 25%;
         width: 100%;
         margin: 0px;
         position: relative;
+        border: 1px solid black;
         .weather-description {
-
-        }
+          text-align: center;
+          text-shadow: 3px 2px red;
+          font-family: "Roboto", serif;
+          font-size: 50px;
+          width: 600px;
+         }
         .weather-toggle {
-
+          left: 85%;
+          top: -5%;
+          transform: translateY(-50%);
+          transform: translateX(-50%);
+         }
         }
-     }
+
      .traffic {
         height: 25%;
         width: 100%;
         margin: 0px;
         position: relative;
-      .traffic-description {
+        border: 1px solid black;
 
+        .traffic-description {
+          text-align: center;
+          text-shadow: 3px 2px red;
+          font-family: "Roboto", serif;
+          font-size: 50px;
+          width: 600px;
+        }
+        .traffic-toggle{
+          left: 85%;
+          top: -5%;
+          transform: translateY(-50%);
+          transform: translateX(-50%);
+        }
       }
-      .traffic-toggle{
-
-      }
-     }
-   }
-}
+    }
+  }

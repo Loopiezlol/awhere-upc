@@ -34,15 +34,17 @@ class View extends Reflux.Component {
     return (
       <div className="main-page">
         <div className="air-polution">
+          <div className="desc-toggl-air">
             <p className="air-description"> Turn on the air quality toggle</p>
-          <Toggle
-            className="air-toggle"
-            defaultValue={this.state.airQuality}
-            onUpdate={value => this.handleAirQualityToggle(value)}
-          >
-            <Choice value>On</Choice>
-            <Choice value={false}>Off</Choice>
-          </Toggle>
+            <Toggle
+              className="air-toggle"
+              defaultValue={this.state.airQuality}
+              onUpdate={value => this.handleAirQualityToggle(value)}
+            >
+              <Choice value>On</Choice>
+              <Choice value={false}>Off</Choice>
+            </Toggle>
+          </div>
         </div>
         <div className="uv-radiations">
           <p className="uv-description"> Turn on the UV rad. toggle</p>
